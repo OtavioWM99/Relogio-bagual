@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Fundo preto, refletindo a escuridão da vida */
+    margin: 0;
+    color: #fff; /* Luz que brilha na escuridão, mas não por muito tempo */
+    font-family: Arial, sans-serif;
+}
+
+/* Contêiner para o relógio e o contador de tempo */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Moldura do relógio: um círculo que representa a vida girando sem parar */
+.relogio-sombrio {
+    position: relative;
+    width: 300px; /* Tamanho do relógio */
+    height: 300px;
+    border: 8px solid #fff; /* Borda branca ao redor do relógio */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #222; /* Cor de fundo do relógio que mudará */
+    transition: background-color 0.5s ease; /* Transição suave para o abismo */
+}
+
+/* Ponteiros do relógio: representando a passagem do tempo com estilo */
+.ponteiro {
+    position: absolute;
+    background-color: #fff; /* Ponteiros brancos */
+    transform-origin: bottom; /* O ponto de origem, onde tudo termina */
+    transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1); /* Movimento suave */
+}
+
+.destinoFinal { /* Ponteiro das horas */
+    width: 6px; /* Espessura do ponteiro das horas */
+    height: 70px; /* Altura do ponteiro das horas */
+    bottom: 50%; /* Centraliza verticalmente */
+}
+
+.decadencia { /* Ponteiro dos minutos */
+    width: 4px; /* Espessura do ponteiro dos minutos */
+    height: 100px; /* Altura do ponteiro dos minutos */
+    bottom: 50%;
+}
+
+.ultimaBatida { /* Ponteiro dos segundos */
+    width: 2px; /* Espessura do ponteiro dos segundos */
+    height: 120px; /* Altura do ponteiro dos segundos */
+    background-color: #f00; /* Vermelho para o ponteiro dos segundos */
+    bottom: 50%; /* Centraliza verticalmente */
+}
+
+/* Centro do relógio */
+.centro {
+    position: absolute;
+    width: 10px; /* Centro do relógio */
+    height: 10px;
+    background-color: #fff; /* Brilho no centro */
+    border-radius: 50%; /* Forma redonda */
+}
+
+/* Números das horas no relógio */
+.numero {
+    position: absolute;
+    color: #fff; /* Cor dos números */
+    font-size: 24px; /* Tamanho da fonte dos números */
+}
+
+/* Estilo do contador de tempo fora do relógio */
+.tempo {
+    margin-top: 20px; /* Espaçamento acima do contador */
+    font-size: 36px; /* Tamanho da fonte do contador */
+}
+.cor-preenchida {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Mantém a forma circular */
+    clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 0 100%, 0 0); /* Forma inicial que cobre o relógio */
+    background-color: rgba(255, 0, 0, 0.5); /* Cor inicial da área preenchida */
+    transform-origin: center; /* A origem de transformação é o centro do relógio */
+    transition: transform 0.5s ease; /* Transição suave para o preenchimento */
+    z-index: -1; /* Coloca atrás dos ponteiros e números */
+}
+/* Estilo do botão de Iniciar Som */
+#iniciar-som {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px; /* Posiciona o botão mais abaixo */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#iniciar-som:hover {
+    background-color: #777; /* Mudança de cor ao passar o mouse */
+}
+
+#iniciar-som:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+/* Estilo do pop-up de aviso */
+.audio-alert {
+    display: none; /* Inicialmente escondido */
+    position: absolute;
+    top: 20%;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+}
+/* Estilo da instrução acima do botão */
+.instrucoes {
+    font-size: 18px;
+    color: #ccc;
+    margin: 20px 0 10px;
+    text-align: center;
+}
